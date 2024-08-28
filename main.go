@@ -13,9 +13,14 @@ func main() {
 	if len(os.Args) != 3 {
 		if len(os.Args) == 2 {
 			text = os.Args[1]
+			if !functions.ValidateASCII(text) {
+				fmt.Println("Error: Non-ASCII character detected")
+				return
+			}
 			style = "standard"
 		} else {
 			fmt.Println("Usage: go run . [STRING] [BANNER]")
+			fmt.Println("EX: go run . something standard")
 			return
 		}
 		
